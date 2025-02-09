@@ -4,14 +4,40 @@ include('dbcon.php');
 
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
-    $password = $_POST['password']; // Hash this before storing
+    $password = $_POST['password']; // Direct storage (not hashed)
 
-    // TODO: Implement user existence check
-    // TODO: Insert the user into the database with password hashing
+    // Debug: Check if values are received
+    if (empty($username) || empty($password)) {
+        die("Error: Username or Password is empty.");
+    }
 
-    // Redirect to login page after successful signup
-    header("Location: index.php?signup_success=1");
-    exit();
+    // Check if the user already exists
+    $check_query = "SELECT * FROM users WHERE user_name = ?";
+    $stmt = mysqli_prepare($connection, $check_query);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (!$result) {
+        die("Error: " . mysqli_error($connection)); // Debugging
+    }
+
+    if ($result->num_rows > 0) {
+        die("Error: Username already exists.");
+    }
+
+    // Insert user into database
+    $insert_query = "INSERT INTO users (user_name, password) VALUES (?, ?)";
+    $stmt = mysqli_prepare($connection, $insert_query);
+    mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+
+    if (mysqli_stmt_execute($stmt)) {
+        echo "Signup successful!";
+        header("Location: index.php?signup_success=1");
+        exit();
+    } else {
+        die("Signup failed: " . mysqli_error($connection)); // Debugging
+    }
 }
 ?>
 
@@ -46,7 +72,7 @@ if (isset($_POST['signup'])) {
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success" name="signup">Sign Up</button>
+                            <button href="index.php"type="submit" class="btn btn-success" name="signup">Sign Up</button>
                         </div>
                     </form>
                 </div>
