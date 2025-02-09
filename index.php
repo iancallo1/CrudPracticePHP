@@ -71,6 +71,11 @@
         <div class="d-grid">
             <input type="submit" name="login" value="LOGIN" class="btn btn-primary">
         </div>
+        
+        <div class="card-footer text-center">
+           <p> Don't have an account? <a href="signup.php">Signup</a></p>
+        </div>
+        
     </form>
 </div>
 
