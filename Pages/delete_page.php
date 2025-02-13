@@ -1,4 +1,4 @@
-<?php include ('dbcon.php');?>
+<?php include ('../dbcon.php');?>
 
 <?php
 
@@ -15,7 +15,7 @@
         die("Query Failed".mysqli_error($connection));
     }
     else{
-        header('location:index.php?delete_msg=Record Deleted');
+        header('location:mainpage.php?delete_msg=Record Deleted');
     }
   
     }

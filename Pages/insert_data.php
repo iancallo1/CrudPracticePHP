@@ -1,5 +1,5 @@
 <?php
-include ('dbcon.php');  
+include ('../dbcon.php');  
 
 if(isset($_POST['add_student'])) {
     $first_name = trim($_POST['first_name']);  
@@ -8,7 +8,7 @@ if(isset($_POST['add_student'])) {
 
    
     if(empty($first_name)) {  
-        header('location:index.php?message=First Name Needed');
+        header('location:mainpage.php?message=First Name Needed');
        
     } 
 
@@ -21,7 +21,7 @@ if(isset($_POST['add_student'])) {
         die("Query Failed: " . mysqli_error($connection));
     } 
     else {
-        header('location:index.php?insert_msg=Your data has been added successfully');
+        header('location:mainpage.php?insert_msg=Your data has been added successfully');
         exit();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('dbcon.php');
+include('../dbcon.php');
 
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
@@ -33,7 +33,7 @@ if (isset($_POST['signup'])) {
 
     if (mysqli_stmt_execute($stmt)) {
         echo "Signup successful!";
-        header("Location: index.php?signup_success=1");
+        header("Location:../index.php ?signup_success=1");
         exit();
     } else {
         die("Signup failed: " . mysqli_error($connection)); // Debugging
@@ -56,8 +56,8 @@ if (isset($_POST['signup'])) {
     <div class="row w-100">
         <div class="col-md-6 mx-auto">
             <div class="card shadow-lg">
-                <div class="card-header bg-primary text-white text-center">
-                    <h4>Sign Up</h4>
+                <div class="text-center mt-3 mb-4 text-primary">
+                    <h3 class="fw-bold">Sign Up</h3>
                 </div>
                 <div class="card-body">
                     <form action="signup.php" method="POST">
@@ -72,12 +72,12 @@ if (isset($_POST['signup'])) {
                         </div>
 
                         <div class="d-grid">
-                            <button href="index.php"type="submit" class="btn btn-success" name="signup">Sign Up</button>
+                            <button href="index.php"type="submit" class="btn btn-success" name="signup">SIGNUP</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <p>Already have an account? <a href="index.php">Login</a></p>
+                    <p>Already have an account? <a href="../index.php">Login</a></p>
                 </div>
             </div>
         </div>

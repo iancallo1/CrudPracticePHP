@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
 session_start();
-include ('dbcon.php');?>
+include ('../dbcon.php');?>
 <html lang="en">
    <head>
     <title> Home Page</title>

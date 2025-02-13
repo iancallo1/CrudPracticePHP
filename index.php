@@ -40,6 +40,7 @@
     <?php
     session_start();
     include ('dbcon.php');
+    
 
     if (isset($_POST['login'])) {
         $username = $_POST['user_name'];
@@ -51,7 +52,7 @@
 
         if (mysqli_num_rows($result) > 0) {
             // Successful login, redirect to main page
-            header("Location: mainpage.php");
+            header("Location: ./Pages/mainpage.php");
             exit();
         } else {
             echo '<div class="alert alert-danger text-center">Invalid username or password!</div>';
@@ -73,7 +74,7 @@
         </div>
         
         <div class="card-footer text-center">
-           <p> Don't have an account? <a href="signup.php">Signup</a></p>
+           <p> Don't have an account? <a href="./Pages/signup.php">Signup</a></p>
         </div>
         
     </form>
