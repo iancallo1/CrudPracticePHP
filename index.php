@@ -8,34 +8,12 @@
           rel="stylesheet" 
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
           crossorigin="anonymous">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .login-container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-        .login-title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-            color: #007bff;
-        }
-    </style>
+ 
 </head>
-<body>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
 
-<div class="login-container">
-    <h2 class="login-title">Login</h2>
+<div class="bg-white p-4 rounded shadow-sm w-100" style="max-width: 400px;">
+    <h2 class="text-center mb-4 fw-bold text-primary">Login</h2>
 
     <?php
     session_start();
